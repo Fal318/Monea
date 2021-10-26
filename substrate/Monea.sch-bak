@@ -176,7 +176,7 @@ Wire Wire Line
 Wire Wire Line
 	7100 3850 6800 3850
 Wire Wire Line
-	6800 3250 6800 3750
+	6800 3250 6800 3850
 Connection ~ 6800 3850
 Wire Wire Line
 	6800 3850 6800 4800
@@ -199,41 +199,4 @@ Wire Wire Line
 	5400 3400 5400 4450
 Wire Wire Line
 	5400 4450 7100 4450
-$Comp
-L LED:AE-WS2812B U?
-U 1 1 615CA3ED
-P 6050 3850
-F 0 "U?" H 6050 4182 50  0000 C CNN
-F 1 "AE-WS2812B" H 6050 4091 50  0000 C CNN
-F 2 "" H 6050 4050 50  0001 C CNN
-F 3 "" H 6050 4050 50  0001 C CNN
-	1    6050 3850
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5600 3200 5750 3200
-Wire Wire Line
-	5750 3200 5750 3750
-Wire Wire Line
-	5750 3750 5850 3750
-Connection ~ 5600 3200
-Wire Wire Line
-	6250 3750 6800 3750
-Connection ~ 6800 3750
-Wire Wire Line
-	6800 3750 6800 3850
-Wire Wire Line
-	6250 3950 7000 3950
-Wire Wire Line
-	7000 3950 7000 3750
-Connection ~ 7000 3750
-Wire Wire Line
-	7000 3950 7000 4100
-Wire Wire Line
-	7000 4100 5750 4100
-Wire Wire Line
-	5750 4100 5750 3950
-Wire Wire Line
-	5750 3950 5850 3950
-Connection ~ 7000 3950
 $EndSCHEMATC
