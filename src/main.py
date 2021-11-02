@@ -1,4 +1,7 @@
 #coding: utf-8
+import os
+import time
+import requests
 from smbus2 import SMBus
 import mh_z19
 
@@ -61,12 +64,10 @@ def readData():
     temp_raw = (data[3] << 12) | (data[4] << 4) | (data[5] >> 4)
     hum_raw = (data[6] << 8) | data[7]
 
-    compensate_T(temp_raw)
-    compensate_P(pres_raw)
-    compensate_H(hum_raw)
+    return [get_temp(temp_raw), get_hum(hum_raw), get_pressure(pres_raw)]
 
 
-def compensate_P(adc_P):
+def get_pressure(adc_P):
     global t_fine
     pressure = 0.0
 
@@ -88,29 +89,33 @@ def compensate_P(adc_P):
     pressure = pressure + ((v1 + v2 + digP[6]) / 16.0)
 
     print(f"pressure : {(pressure/100):.1f} hPa")
+    return pressure
 
 
-def compensate_T(adc_T):
+def get_temp(adc_T) -> float:
     global t_fine
     v1 = (adc_T / 16384.0 - digT[0] / 1024.0) * digT[1]
     v2 = (adc_T / 131072.0 - digT[0] / 8192.0) * \
         (adc_T / 131072.0 - digT[0] / 8192.0) * digT[2]
     t_fine = v1 + v2
     temperature = t_fine / 5120.0
-    print(f"temp : {temperature:.1f} ℃" )
+    print(f"temp : {temperature:.1f} ℃")
+    return temperature
 
 
-def compensate_H(adc_H):
+def get_hum(adc_H):
     global t_fine
-    var_h = t_fine - 76800.0
-    if var_h != 0:
-        var_h = (adc_H - (digH[3] * 64.0 + digH[4]/16384.0 * var_h)) * (digH[1] / 65536.0 * (
-            1.0 + digH[5] / 67108864.0 * var_h * (1.0 + digH[2] / 67108864.0 * var_h)))
-    else:
+    hum = t_fine - 76800.0
+
+    if hum == 0:
         return 0
-    var_h = var_h * (1.0 - digH[0] * var_h / 524288.0)
-    var_h = 100.0 if var_h > 100.0 else 0.0 if var_h < 0.0 else var_h
-    print(f"hum : {var_h:.1f} ％")
+    else:
+        hum = (adc_H - (digH[3] * 64.0 + digH[4]/16384.0 * hum)) * (digH[1] / 65536.0 * (
+            1.0 + digH[5] / 67108864.0 * hum * (1.0 + digH[2] / 67108864.0 * hum)))
+    hum = hum * (1.0 - digH[0] * hum / 524288.0)
+    hum = 100.0 if hum > 100.0 else 0.0 if hum < 0.0 else hum
+    print(f"hum : {hum:.1f} ％")
+    return hum
 
 
 def setup():
@@ -126,16 +131,30 @@ def setup():
     writeReg(0xF5, config_reg)
 
 
+def send_data(sensor_id: str, temp: float, hum: float, co2: float):
+    url = 'https://monea-api.herokuapp.com/api/v0/record'
+    params = {
+        "created": time.time(),
+        "co2": co2,
+        "humid": hum,
+        "temp": temp,
+        "sensorId": sensor_id
+    }
+    requests.post(url, json=params)
+
+
 setup()
 get_calib_param()
 
 
 if __name__ == '__main__':
     try:
-        readData()
-
+        sensor_id = os.environ.get("MONEA_ID")
+        if sensor_id is None:
+            exit("MONEA_ID is not defined")
+        temp, hum, pres = readData()
+        send_data(temp=temp, hum=hum, co2=co2)
     except KeyboardInterrupt:
         pass
     finally:
         print(f"co2: {co2.co2} ppm")
-

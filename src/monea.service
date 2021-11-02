@@ -1,0 +1,10 @@
+[Unit]
+Description=Monea
+
+[Service]
+Type=simple
+ExecStart=/home/pi/run.sh
+User=monea
+
+[Install]
+WantedBy=multi-user.target
