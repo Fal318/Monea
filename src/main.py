@@ -114,7 +114,7 @@ def setup():
     writeReg(0xF5, 160)
 
 
-def send_data(sensor_id: str, co2: float, temp: float, hum: float, pres: float):
+def send_data(co2: float, temp: float, hum: float, pres: float):
     url = 'https://monea-api.herokuapp.com/api/v1/record'
     sensor_id = os.environ.get("MONEA_ID")
     if sensor_id is None:
@@ -134,8 +134,8 @@ if __name__ == '__main__':
     setup()
     get_calib_param()
     try:
-        #temp, hum, pres = readData()
-        temp, hum, pres = -297, -1, -1
+        temp, hum, pres = readData()
+        #temp, hum, pres = -297, -1, -1
         send_data(temp=temp, hum=hum, pres=pres, co2=co2)
     except KeyboardInterrupt:
         pass
