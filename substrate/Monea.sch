@@ -19,7 +19,7 @@ U 1 1 61528489
 P 5000 3900
 F 0 "J1" H 5050 5000 50  0000 C CNN
 F 1 "Conn_02x20_Odd_Even" H 5100 4900 50  0000 C CNN
-F 2 "" H 5000 3900 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_2x40_P2.54mm_Vertical" H 5000 3900 50  0001 C CNN
 F 3 "~" H 5000 3900 50  0001 C CNN
 	1    5000 3900
 	1    0    0    -1  
@@ -30,7 +30,7 @@ U 1 1 6152C049
 P 6400 4150
 F 0 "J2" H 6250 3550 50  0000 L CNN
 F 1 "Conn_01x06_Female" H 5750 3450 50  0000 L CNN
-F 2 "" H 6400 4150 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical" H 6400 4150 50  0001 C CNN
 F 3 "~" H 6400 4150 50  0001 C CNN
 	1    6400 4150
 	1    0    0    -1  
@@ -41,7 +41,7 @@ U 1 1 6152DF10
 P 7000 3900
 F 0 "J3" H 6900 3600 50  0000 L CNN
 F 1 "Conn_01x04_Female" H 6600 3500 50  0000 L CNN
-F 2 "" H 7000 3900 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 7000 3900 50  0001 C CNN
 F 3 "~" H 7000 3900 50  0001 C CNN
 	1    7000 3900
 	1    0    0    -1  
@@ -52,7 +52,7 @@ U 1 1 6152E570
 P 6950 4650
 F 0 "J4" H 6850 4400 50  0000 L CNN
 F 1 "Conn_01x05_Female" H 6600 4300 50  0000 L CNN
-F 2 "" H 6950 4650 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical" H 6950 4650 50  0001 C CNN
 F 3 "~" H 6950 4650 50  0001 C CNN
 	1    6950 4650
 	1    0    0    -1  
@@ -73,20 +73,7 @@ NoConn ~ 6800 4100
 NoConn ~ 6750 4450
 NoConn ~ 6750 4750
 NoConn ~ 6750 4850
-$Comp
-L Device:LED_RGBA D1
-U 1 1 6177CCDA
-P 6950 3150
-F 0 "D1" H 6950 3647 50  0000 C CNN
-F 1 "LED_RGBA" H 6950 3556 50  0000 C CNN
-F 2 "" H 6950 3100 50  0001 C CNN
-F 3 "~" H 6950 3100 50  0001 C CNN
-	1    6950 3150
-	1    0    0    -1  
-$EndComp
 NoConn ~ 4800 3400
-NoConn ~ 4800 3500
-NoConn ~ 4800 3600
 NoConn ~ 4800 3700
 NoConn ~ 4800 3800
 NoConn ~ 4800 3900
@@ -97,7 +84,7 @@ U 1 1 61793657
 P 6150 3050
 F 0 "BZ1" H 6150 2850 50  0000 L CNN
 F 1 "Buzzer" H 6100 2750 50  0000 L CNN
-F 2 "" V 6125 3150 50  0001 C CNN
+F 2 "Buzzer_Beeper:Buzzer_12x9.5RM7.6" V 6125 3150 50  0001 C CNN
 F 3 "~" V 6125 3150 50  0001 C CNN
 	1    6150 3050
 	1    0    0    -1  
@@ -110,7 +97,6 @@ NoConn ~ 5300 4500
 NoConn ~ 5300 4600
 NoConn ~ 5300 4700
 NoConn ~ 5300 4800
-NoConn ~ 4800 4900
 NoConn ~ 4800 4800
 NoConn ~ 4800 4700
 NoConn ~ 4800 4600
@@ -120,7 +106,6 @@ NoConn ~ 4800 4300
 NoConn ~ 4800 4200
 NoConn ~ 4800 4100
 NoConn ~ 5300 3100
-NoConn ~ 5300 3600
 NoConn ~ 5300 3900
 Text GLabel 4800 3100 0    50   Input ~ 0
 SDA
@@ -155,18 +140,14 @@ $EndComp
 $Comp
 L power:GND #PWR0103
 U 1 1 61A08987
-P 5550 3300
-F 0 "#PWR0103" H 5550 3050 50  0001 C CNN
-F 1 "GND" H 5555 3127 50  0000 C CNN
-F 2 "" H 5550 3300 50  0001 C CNN
-F 3 "" H 5550 3300 50  0001 C CNN
-	1    5550 3300
+P 5550 3250
+F 0 "#PWR0103" H 5550 3000 50  0001 C CNN
+F 1 "GND" H 5555 3077 50  0000 C CNN
+F 2 "" H 5550 3250 50  0001 C CNN
+F 3 "" H 5550 3250 50  0001 C CNN
+	1    5550 3250
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5300 3200 5550 3200
-Wire Wire Line
-	5550 3200 5550 3300
 $Comp
 L power:GND #PWR0104
 U 1 1 61A10B32
@@ -262,12 +243,6 @@ F 3 "" H 6000 3300 50  0001 C CNN
 $EndComp
 Text GLabel 6750 2950 0    50   Input ~ 0
 R
-Text GLabel 5300 3500 2    50   Input ~ 0
-R
-Text GLabel 5300 3700 2    50   Input ~ 0
-G
-Text GLabel 5300 3800 2    50   Input ~ 0
-B
 NoConn ~ 5300 4000
 Text GLabel 6750 3150 0    50   Input ~ 0
 G
@@ -297,7 +272,7 @@ Text Notes 7000 5150 0    50   ~ 0
 MH-Z19C
 Wire Wire Line
 	4600 3000 4800 3000
-Text Notes 4500 5150 0    50   ~ 0
+Text Notes 5000 5150 0    50   ~ 0
 Raspberry Pi Zero
 Text Notes 6250 3550 0    50   ~ 0
 Buzzer
@@ -309,4 +284,47 @@ Wire Wire Line
 	7250 3150 7250 3300
 Wire Wire Line
 	6000 3300 6000 3150
+$Comp
+L Device:LED_GBCR D1
+U 1 1 61AEEBA7
+P 6950 3150
+F 0 "D1" H 6950 3647 50  0000 C CNN
+F 1 "LED_GBCR" H 6950 3556 50  0000 C CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB" H 6950 3100 50  0001 C CNN
+F 3 "~" H 6950 3100 50  0001 C CNN
+	1    6950 3150
+	-1   0    0    -1  
+$EndComp
+Text GLabel 4600 4150 3    50   Input ~ 0
+R
+Text GLabel 4800 3600 0    50   Input ~ 0
+G
+Text GLabel 5300 3700 2    50   Input ~ 0
+B
+NoConn ~ 5300 3800
+NoConn ~ 5300 4900
+NoConn ~ 5300 3500
+NoConn ~ 5300 3600
+Wire Wire Line
+	4800 3500 4600 3500
+Wire Wire Line
+	4600 3500 4600 3700
+$Comp
+L Device:R R1
+U 1 1 61B088E8
+P 4600 3850
+F 0 "R1" H 4670 3896 50  0000 L CNN
+F 1 "R" H 4670 3805 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" V 4530 3850 50  0001 C CNN
+F 3 "~" H 4600 3850 50  0001 C CNN
+	1    4600 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 4000 4600 4150
+Wire Wire Line
+	5550 3200 5550 3250
+Wire Wire Line
+	5300 3200 5550 3200
+NoConn ~ 4800 4900
 $EndSCHEMATC
