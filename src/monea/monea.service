@@ -5,7 +5,7 @@ Description=Monea
 Type=simple
 ExecStart=/bin/bash monea.sh
 User=root
-WorkingDirectory=/home/pi/Monea/monea
+WorkingDirectory=/home/pi/Monea/src/monea
 
 [Install]
 WantedBy=multi-user.target
