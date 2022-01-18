@@ -129,10 +129,10 @@ if __name__ == '__main__':
     get_calib_param()
     co2 = mh_z19.read()
     temp, hum, pres = readData()
-    """
-    if co2 is None:
-        co2 = -1
-    """
+    co2 = -255 if co2 is None else co2
+    hum = -255 if hum is None else hum
+    temp = -255 if temp is None else temp
+    pres = -255 if pres is None else pres
     try:
         send_data(temp=temp, hum=hum, pres=pres, co2=co2)
     except:
