@@ -1,0 +1,330 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector_Generic:Conn_02x20_Odd_Even J1
+U 1 1 61528489
+P 5000 3900
+F 0 "J1" H 5050 5000 50  0000 C CNN
+F 1 "Conn_02x20_Odd_Even" H 5100 4900 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_2x40_P2.54mm_Vertical" H 5000 3900 50  0001 C CNN
+F 3 "~" H 5000 3900 50  0001 C CNN
+	1    5000 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x06_Female J2
+U 1 1 6152C049
+P 6400 4150
+F 0 "J2" H 6250 3550 50  0000 L CNN
+F 1 "Conn_01x06_Female" H 5750 3450 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical" H 6400 4150 50  0001 C CNN
+F 3 "~" H 6400 4150 50  0001 C CNN
+	1    6400 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x04_Female J3
+U 1 1 6152DF10
+P 7000 3900
+F 0 "J3" H 6900 3600 50  0000 L CNN
+F 1 "Conn_01x04_Female" H 6600 3500 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 7000 3900 50  0001 C CNN
+F 3 "~" H 7000 3900 50  0001 C CNN
+	1    7000 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x05_Female J4
+U 1 1 6152E570
+P 6950 4650
+F 0 "J4" H 6850 4400 50  0000 L CNN
+F 1 "Conn_01x05_Female" H 6600 4300 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical" H 6950 4650 50  0001 C CNN
+F 3 "~" H 6950 4650 50  0001 C CNN
+	1    6950 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6200 4050 5950 4050
+Wire Wire Line
+	6200 4350 5950 4350
+NoConn ~ 6200 4150
+Text Notes 6200 5150 0    50   ~ 0
+BME280
+Wire Wire Line
+	6700 3800 6800 3800
+Wire Wire Line
+	6800 3900 6700 3900
+NoConn ~ 6800 4000
+NoConn ~ 6800 4100
+NoConn ~ 6750 4450
+NoConn ~ 6750 4750
+NoConn ~ 6750 4850
+NoConn ~ 4800 3400
+NoConn ~ 4800 3700
+NoConn ~ 4800 3800
+NoConn ~ 4800 3900
+NoConn ~ 4800 4000
+$Comp
+L Device:Buzzer BZ1
+U 1 1 61793657
+P 6150 3050
+F 0 "BZ1" H 6150 2850 50  0000 L CNN
+F 1 "Buzzer" H 6100 2750 50  0000 L CNN
+F 2 "Buzzer_Beeper:Buzzer_12x9.5RM7.6" V 6125 3150 50  0001 C CNN
+F 3 "~" V 6125 3150 50  0001 C CNN
+	1    6150 3050
+	1    0    0    -1  
+$EndComp
+NoConn ~ 5300 4100
+NoConn ~ 5300 4200
+NoConn ~ 5300 4300
+NoConn ~ 5300 4400
+NoConn ~ 5300 4500
+NoConn ~ 5300 4600
+NoConn ~ 5300 4700
+NoConn ~ 5300 4800
+NoConn ~ 4800 4800
+NoConn ~ 4800 4700
+NoConn ~ 4800 4600
+NoConn ~ 4800 4500
+NoConn ~ 4800 4400
+NoConn ~ 4800 4300
+NoConn ~ 4800 4200
+NoConn ~ 4800 4100
+NoConn ~ 5300 3100
+NoConn ~ 5300 3900
+Text GLabel 4800 3100 0    50   Input ~ 0
+SDA
+Text GLabel 6200 4250 0    50   Input ~ 0
+SDA
+Text GLabel 6200 4450 0    50   Input ~ 0
+SCL
+Text GLabel 4800 3200 0    50   Input ~ 0
+SCL
+$Comp
+L power:+3.3V #PWR0101
+U 1 1 61A0036B
+P 4600 2850
+F 0 "#PWR0101" H 4600 2700 50  0001 C CNN
+F 1 "+3.3V" H 4615 3023 50  0000 C CNN
+F 2 "" H 4600 2850 50  0001 C CNN
+F 3 "" H 4600 2850 50  0001 C CNN
+	1    4600 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR0102
+U 1 1 61A053DF
+P 5950 3850
+F 0 "#PWR0102" H 5950 3700 50  0001 C CNN
+F 1 "+3.3V" H 5965 4023 50  0000 C CNN
+F 2 "" H 5950 3850 50  0001 C CNN
+F 3 "" H 5950 3850 50  0001 C CNN
+	1    5950 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0103
+U 1 1 61A08987
+P 5550 3250
+F 0 "#PWR0103" H 5550 3000 50  0001 C CNN
+F 1 "GND" H 5555 3077 50  0000 C CNN
+F 2 "" H 5550 3250 50  0001 C CNN
+F 3 "" H 5550 3250 50  0001 C CNN
+	1    5550 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0104
+U 1 1 61A10B32
+P 6700 4050
+F 0 "#PWR0104" H 6700 3800 50  0001 C CNN
+F 1 "GND" H 6705 3877 50  0000 C CNN
+F 2 "" H 6700 4050 50  0001 C CNN
+F 3 "" H 6700 4050 50  0001 C CNN
+	1    6700 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 3900 6700 4050
+Wire Wire Line
+	5950 4050 5950 4350
+$Comp
+L power:+5V #PWR0105
+U 1 1 61A16068
+P 5550 2850
+F 0 "#PWR0105" H 5550 2700 50  0001 C CNN
+F 1 "+5V" H 5565 3023 50  0000 C CNN
+F 2 "" H 5550 2850 50  0001 C CNN
+F 3 "" H 5550 2850 50  0001 C CNN
+	1    5550 2850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 3000 5550 3000
+Wire Wire Line
+	5550 3000 5550 2850
+Wire Wire Line
+	4600 2850 4600 3000
+$Comp
+L power:+5V #PWR0106
+U 1 1 61A3536B
+P 6700 3750
+F 0 "#PWR0106" H 6700 3600 50  0001 C CNN
+F 1 "+5V" H 6800 3850 50  0000 C CNN
+F 2 "" H 6700 3750 50  0001 C CNN
+F 3 "" H 6700 3750 50  0001 C CNN
+	1    6700 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 3750 6700 3800
+$Comp
+L power:GND #PWR0107
+U 1 1 61A3CE32
+P 7250 3300
+F 0 "#PWR0107" H 7250 3050 50  0001 C CNN
+F 1 "GND" H 7150 3200 50  0000 C CNN
+F 2 "" H 7250 3300 50  0001 C CNN
+F 3 "" H 7250 3300 50  0001 C CNN
+	1    7250 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0108
+U 1 1 61A47E60
+P 5950 4550
+F 0 "#PWR0108" H 5950 4300 50  0001 C CNN
+F 1 "GND" H 5955 4377 50  0000 C CNN
+F 2 "" H 5950 4550 50  0001 C CNN
+F 3 "" H 5950 4550 50  0001 C CNN
+	1    5950 4550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5950 4350 5950 4550
+Connection ~ 5950 4350
+Wire Wire Line
+	5950 3850 5950 3950
+Wire Wire Line
+	5950 3950 6200 3950
+Text GLabel 6750 4550 0    50   Input ~ 0
+TX
+Text GLabel 5300 3300 2    50   Input ~ 0
+TX
+Text GLabel 5300 3400 2    50   Input ~ 0
+RX
+Text GLabel 6750 4650 0    50   Input ~ 0
+RX
+$Comp
+L power:GND #PWR0109
+U 1 1 61A664A3
+P 6000 3300
+F 0 "#PWR0109" H 6000 3050 50  0001 C CNN
+F 1 "GND" H 6005 3127 50  0000 C CNN
+F 2 "" H 6000 3300 50  0001 C CNN
+F 3 "" H 6000 3300 50  0001 C CNN
+	1    6000 3300
+	1    0    0    -1  
+$EndComp
+Text GLabel 6750 2950 0    50   Input ~ 0
+R
+NoConn ~ 5300 4000
+Text GLabel 6750 3150 0    50   Input ~ 0
+G
+Text GLabel 6750 3350 0    50   Input ~ 0
+B
+Wire Wire Line
+	6050 3150 6000 3150
+Text GLabel 4800 3300 0    50   Input ~ 0
+BZ
+Text GLabel 6050 2950 0    50   Input ~ 0
+BZ
+Wire Notes Line
+	4450 2600 4450 5200
+Wire Notes Line
+	5750 5200 5750 2600
+Wire Notes Line
+	7400 3600 5750 3600
+Wire Notes Line
+	4450 2600 7400 2600
+Wire Notes Line
+	4450 5200 7400 5200
+Wire Notes Line
+	7400 2600 7400 5200
+Wire Notes Line
+	6550 2600 6550 5200
+Text Notes 7000 5150 0    50   ~ 0
+MH-Z19C
+Wire Wire Line
+	4600 3000 4800 3000
+Text Notes 5000 5150 0    50   ~ 0
+Raspberry Pi Zero
+Text Notes 6250 3550 0    50   ~ 0
+Buzzer
+Text Notes 7000 3550 0    50   ~ 0
+Color LED
+Wire Wire Line
+	7150 3150 7250 3150
+Wire Wire Line
+	7250 3150 7250 3300
+Wire Wire Line
+	6000 3300 6000 3150
+$Comp
+L Device:LED_GBCR D1
+U 1 1 61AEEBA7
+P 6950 3150
+F 0 "D1" H 6950 3647 50  0000 C CNN
+F 1 "LED_GBCR" H 6950 3556 50  0000 C CNN
+F 2 "LED_THT:LED_D5.0mm-4_RGB" H 6950 3100 50  0001 C CNN
+F 3 "~" H 6950 3100 50  0001 C CNN
+	1    6950 3150
+	-1   0    0    -1  
+$EndComp
+Text GLabel 4600 4150 3    50   Input ~ 0
+R
+Text GLabel 4800 3600 0    50   Input ~ 0
+G
+Text GLabel 5300 3700 2    50   Input ~ 0
+B
+NoConn ~ 5300 3800
+NoConn ~ 5300 4900
+NoConn ~ 5300 3500
+NoConn ~ 5300 3600
+Wire Wire Line
+	4800 3500 4600 3500
+Wire Wire Line
+	4600 3500 4600 3700
+$Comp
+L Device:R R1
+U 1 1 61B088E8
+P 4600 3850
+F 0 "R1" H 4670 3896 50  0000 L CNN
+F 1 "R" H 4670 3805 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal" V 4530 3850 50  0001 C CNN
+F 3 "~" H 4600 3850 50  0001 C CNN
+	1    4600 3850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 4000 4600 4150
+Wire Wire Line
+	5550 3200 5550 3250
+Wire Wire Line
+	5300 3200 5550 3200
+NoConn ~ 4800 4900
+$EndSCHEMATC
