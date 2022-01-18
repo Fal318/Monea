@@ -1,6 +1,9 @@
 [Unit]
 Description= Beeper Timer
+
 [Timer]
-OnCalendar=Mon..Fri *-*-* *:0/2:50
+#OnCalendar=Mon..Fri *-*-* *:0/2:50
+OnCalendar=Mon..Fri *-*-* 7..17:0/2:50
+
 [Install]
 WantedBy=timers.target

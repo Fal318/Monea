@@ -5,8 +5,7 @@ Description=Beeper
 Type=simple
 ExecStart=/bin/bash beeper.sh
 User=pi
-WorkingDirectory=/home/pi/Monea/beeper
-
+WorkingDirectory=/home/pi/src/Monea/beeper
 
 [Install]
 WantedBy=multi-user.target

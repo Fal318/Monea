@@ -75,6 +75,9 @@ def get_pressure(adc_P):
     v1 = digP[8] * (prs / 8) ** 2 / 33554432
     v2 = prs * digP[7] / 32768
     prs += (v1 + v2 + digP[6]) / 16
+    prs /= 100
+    print(f"prs : {prs:.1f} hpa")
+    return prs
 
 
 def get_temp(adc_T) -> float:
@@ -129,7 +132,7 @@ if __name__ == '__main__':
     get_calib_param()
     co2 = mh_z19.read()
     temp, hum, pres = readData()
-    co2 = -255 if co2 is None else co2
+    co2 = -255 if co2 is None else co2["co2"]
     hum = -255 if hum is None else hum
     temp = -255 if temp is None else temp
     pres = -255 if pres is None else pres
@@ -137,6 +140,6 @@ if __name__ == '__main__':
         send_data(temp=temp, hum=hum, pres=pres, co2=co2)
     except:
         pass
-
-    print(f"co2: {co2['co2']}ppm")
-    print(f"{co2['co2']}")
+    
+    print(f"co2 : {co2} ppm")
+    print(co2)
