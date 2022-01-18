@@ -11,7 +11,7 @@ GPIO.setup(BEEPER_PIN, GPIO.OUT)
 
 
 def beep():
-    beeper_count = 0 if co2 < 700 else 1 if co2 < 1000 else 2 if co2 < 1500 else 3
+    beeper_count = 0 if co2 < 700 else 2 if co2 < 1000 else 3 if co2 < 1500 else 4
     for _ in range(beeper_count):
         GPIO.output(BEEPER_PIN, GPIO.HIGH)
         time.sleep(0.1)
