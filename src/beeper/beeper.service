@@ -1,0 +1,12 @@
+[Unit]
+Description=Beeper
+
+[Service]
+Type=simple
+ExecStart=/bin/bash beeper.sh
+User=pi
+WorkingDirectory=/home/pi/Monea/beeper
+
+
+[Install]
+WantedBy=multi-user.target

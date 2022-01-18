@@ -1,5 +1,4 @@
-#coding: utf-8
-import os
+# coding: utf-8
 import time
 import requests
 from smbus2 import SMBus
@@ -59,15 +58,16 @@ def readData():
 
 
 def get_pressure(adc_P):
+
     global t_fine
     prs = 0
-
-    v1 = (t_fine - 128000) / 2
-    v2 = (v1 / 4)**2 * digP[5] / 2048
-    v2 += v1 * digP[4] * 2
-    v2 = v2 / 4 + digP[3] * 65536
-    v1 = digP[2] * (v1 / 4)**2 / 65536 + digP[1] * v1 / 131072
-    v1 = digP[1] * (1 + v1 / 32768)
+    v1 = (t_fine / 2.0) - 64000.0
+    v2 = (((v1 / 4.0) * (v1 / 4.0)) / 2048) * digP[5]
+    v2 = v2 + ((v1 * digP[4]) * 2.0)
+    v2 = (v2 / 4.0) + (digP[3] * 65536.0)
+    v1 = (((digP[2] * (((v1 / 4.0) * (v1 / 4.0)) / 8192)) /
+           8) + ((digP[1] * v1) / 2.0)) / 262144
+    v1 = ((32768 + v1) * digP[0]) / 32768
 
     if v1 == 0:
         return 0
@@ -76,9 +76,6 @@ def get_pressure(adc_P):
     v1 = digP[8] * (prs / 8) ** 2 / 33554432
     v2 = prs * digP[7] / 32768
     prs += (v1 + v2 + digP[6]) / 16
-
-    print(f"pressure : {(prs/100):.1f} hPa")
-    return prs
 
 
 def get_temp(adc_T) -> float:
@@ -116,7 +113,7 @@ def setup():
 
 def send_data(co2: float, temp: float, hum: float, pres: float):
     url = 'https://monea-api.herokuapp.com/api/v1/record'
-    sensor_id = os.environ.get("MONEA_ID")
+    sensor_id = "DEB1"
     if sensor_id is None:
         exit("MONEA_ID is not defined")
     params = {
@@ -135,9 +132,10 @@ if __name__ == '__main__':
     get_calib_param()
     try:
         temp, hum, pres = readData()
-        #temp, hum, pres = -297, -1, -1
         send_data(temp=temp, hum=hum, pres=pres, co2=co2)
+
     except KeyboardInterrupt:
         pass
     finally:
-        print(f"co2: {co2.co2} ppm")
+        print(f"co2: {co2['co2']}ppm")
+        print(f"{co2['co2']}")
