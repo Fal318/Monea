@@ -4,7 +4,6 @@ import requests
 from smbus2 import SMBus
 import mh_z19
 
-co2 = mh_z19.read()
 bus_number, i2c_address = 1, 0x76
 bus = SMBus(bus_number)
 digT, digP, digH = [], [], []
@@ -114,8 +113,6 @@ def setup():
 def send_data(co2: float, temp: float, hum: float, pres: float):
     url = 'https://monea-api.herokuapp.com/api/v1/record'
     sensor_id = "DEB1"
-    if sensor_id is None:
-        exit("MONEA_ID is not defined")
     params = {
         "created": time.time(),
         "co2": co2,
@@ -130,12 +127,16 @@ def send_data(co2: float, temp: float, hum: float, pres: float):
 if __name__ == '__main__':
     setup()
     get_calib_param()
+    co2 = mh_z19.read()
+    temp, hum, pres = readData()
+    """
+    if co2 is None:
+        co2 = -1
+    """
     try:
-        temp, hum, pres = readData()
         send_data(temp=temp, hum=hum, pres=pres, co2=co2)
-
-    except KeyboardInterrupt:
+    except:
         pass
-    finally:
-        print(f"co2: {co2['co2']}ppm")
-        print(f"{co2['co2']}")
+
+    print(f"co2: {co2['co2']}ppm")
+    print(f"{co2['co2']}")

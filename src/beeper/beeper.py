@@ -1,18 +1,20 @@
+# coding: utf-8
 import sys
 import time
 import RPi.GPIO as GPIO
 
-co2 = sys.argv()[1]
 BEEPER_PIN = 4
-GPIO.setmode(GPIO.BSM)
-GPIO.setup(4, BEEPER_PIN)
+co2 = int(sys.argv[1])
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(BEEPER_PIN, GPIO.OUT)
 
 
 def beep():
     beeper_count = 0 if co2 < 700 else 1 if co2 < 1000 else 2 if co2 < 1500 else 3
-    for _ in beeper_count:
+    for _ in range(beeper_count):
         GPIO.output(BEEPER_PIN, GPIO.HIGH)
-        time.sleep(0.2)
+        time.sleep(0.1)
         GPIO.output(BEEPER_PIN, GPIO.LOW)
         time.sleep(0.2)
 
