@@ -1,0 +1,6 @@
+[Unit]
+Description= Beeper Timer
+[Timer]
+OnCalendar=Mon..Fri *-*-* *:0/2:50
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Monea
+
+[Service]
+Type=simple
+ExecStart=/bin/bash monea.sh
+User=root
+WorkingDirectory=/home/pi/Monea/monea
+
+[Install]
+WantedBy=multi-user.target
